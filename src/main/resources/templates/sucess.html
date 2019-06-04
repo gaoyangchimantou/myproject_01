@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--xmlns:th="http://www.thymeleaf.org"   引入 thymeleaf的提示-->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>sss</title>
+</head>
+<body>
+<h1>sucess</h1>
+<div th:text="${infor}">这是前端写的死数据</div>
+
+<div id="11" th:id="${infor}">5555555555555555555555</div>
+
+
+<div th:text="${html}"></div>
+<div th:utext="${html}"></div>
+
+<table>
+    <tr th:each="user : ${users}">
+        <td th:text="${user}"></td>
+    </tr>
+</table>
+<hr/>
+
+<!--<span th:each="user : ${users}">[[${user}]]</span>-->
+
+
+
+<table>
+    <tr th:each="user : ${users}">
+        <td>[[${user}]]</td>
+    </tr>
+</table>
+</body>
+</html>
