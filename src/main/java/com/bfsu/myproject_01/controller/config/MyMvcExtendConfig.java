@@ -1,5 +1,6 @@
 package com.bfsu.myproject_01.controller.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -12,4 +13,18 @@ public class MyMvcExtendConfig implements WebMvcConfigurer {
         //直接去找视图解析器,不走controller了
         registry.addViewController("/hello").setViewName("sucess");
     }
+    @Bean
+    public WebMvcConfigurer webMvcConfigurer(){
+
+        WebMvcConfigurer webMvcConfigurer =new WebMvcConfigurer(){
+            @Override
+            public void addViewControllers(ViewControllerRegistry registry) {
+                registry.addViewController("/").setViewName("login");
+                //registry.addViewController("/index.html").setViewName("index");  老师的这个代码没生效
+                registry.addViewController("/login").setViewName("login");
+            }
+        };
+        return webMvcConfigurer;
+    }
+
 }
