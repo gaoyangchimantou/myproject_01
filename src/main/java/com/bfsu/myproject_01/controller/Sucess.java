@@ -25,5 +25,10 @@ public class Sucess {
         map.put("users", Arrays.asList("zhangsan","lisi","wangwu","zhaoliu"));
         return "sucess";
     }
+    @RequestMapping({"login"})
+    public String index(){
 
+
+        return "login";
+    }
 }
