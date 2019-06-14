@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -43,19 +43,23 @@
 	</head>
 
 	<body>
-		<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+		<!--<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
 			<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">Company name</a>
 			<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
 			<ul class="navbar-nav px-3">
 				<li class="nav-item text-nowrap">
 					<a class="nav-link" href="http://getbootstrap.com/docs/4.0/examples/dashboard/#">Sign out</a>
 				</li>
-			</ul>
-		</nav>
+			</ul>~
+		</nav>-->
+		<!--<div th:insert="~{dashboard :: copy}"></div>--><!--//最外层会包一个div-->
+		<!--<div th:replace="~{dashboard :: copy}"></div>--><!--//最外层不会包一个div  相当于将div给替换掉了-->
+		<!--<div th:replace="dashboard :: copy"></div>&lt;!&ndash;//也可以不使用~{}&ndash;&gt;-->
+		<div th:replace="/commons/bar::copy"></div>
 
 		<div class="container-fluid">
 			<div class="row">
-				<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+				<!--<nav class="col-md-2 d-none d-md-block bg-light sidebar">
 					<div class="sidebar-sticky">
 						<ul class="nav flex-column">
 							<li class="nav-item">
@@ -176,138 +180,49 @@
 							</li>
 						</ul>
 					</div>
-				</nav>
+				</nav>-->
+				<!--<div th:replace="dashboard :: copy2"></div>-->
+				<div th:replace="/commons/bar :: copy2(activeUri='emps')"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<h2>Section title</h2>
+					<h2><a class="btn btn-sm btn-success" href="emp" th:href="@{/emp}">员工添加</a></h2>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>Header</th>
-									<th>Header</th>
-									<th>Header</th>
-									<th>Header</th>
+									<th>lastName</th>
+									<th>email</th>
+									<th>gender</th>
+									<th>department</th>
+									<th>birth</th>
+									<th>操作</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1,001</td>
-									<td>Lorem</td>
-									<td>ipsum</td>
-									<td>dolor</td>
-									<td>sit</td>
-								</tr>
-								<tr>
-									<td>1,002</td>
-									<td>amet</td>
-									<td>consectetur</td>
-									<td>adipiscing</td>
-									<td>elit</td>
-								</tr>
-								<tr>
-									<td>1,003</td>
-									<td>Integer</td>
-									<td>nec</td>
-									<td>odio</td>
-									<td>Praesent</td>
-								</tr>
-								<tr>
-									<td>1,003</td>
-									<td>libero</td>
-									<td>Sed</td>
-									<td>cursus</td>
-									<td>ante</td>
-								</tr>
-								<tr>
-									<td>1,004</td>
-									<td>dapibus</td>
-									<td>diam</td>
-									<td>Sed</td>
-									<td>nisi</td>
-								</tr>
-								<tr>
-									<td>1,005</td>
-									<td>Nulla</td>
-									<td>quis</td>
-									<td>sem</td>
-									<td>at</td>
-								</tr>
-								<tr>
-									<td>1,006</td>
-									<td>nibh</td>
-									<td>elementum</td>
-									<td>imperdiet</td>
-									<td>Duis</td>
-								</tr>
-								<tr>
-									<td>1,007</td>
-									<td>sagittis</td>
-									<td>ipsum</td>
-									<td>Praesent</td>
-									<td>mauris</td>
-								</tr>
-								<tr>
-									<td>1,008</td>
-									<td>Fusce</td>
-									<td>nec</td>
-									<td>tellus</td>
-									<td>sed</td>
-								</tr>
-								<tr>
-									<td>1,009</td>
-									<td>augue</td>
-									<td>semper</td>
-									<td>porta</td>
-									<td>Mauris</td>
-								</tr>
-								<tr>
-									<td>1,010</td>
-									<td>massa</td>
-									<td>Vestibulum</td>
-									<td>lacinia</td>
-									<td>arcu</td>
-								</tr>
-								<tr>
-									<td>1,011</td>
-									<td>eget</td>
-									<td>nulla</td>
-									<td>Class</td>
-									<td>aptent</td>
-								</tr>
-								<tr>
-									<td>1,012</td>
-									<td>taciti</td>
-									<td>sociosqu</td>
-									<td>ad</td>
-									<td>litora</td>
-								</tr>
-								<tr>
-									<td>1,013</td>
-									<td>torquent</td>
-									<td>per</td>
-									<td>conubia</td>
-									<td>nostra</td>
-								</tr>
-								<tr>
-									<td>1,014</td>
-									<td>per</td>
-									<td>inceptos</td>
-									<td>himenaeos</td>
-									<td>Curabitur</td>
-								</tr>
-								<tr>
-									<td>1,015</td>
-									<td>sodales</td>
-									<td>ligula</td>
-									<td>in</td>
-									<td>libero</td>
+								<tr th:each="emp : ${emps}">
+									<td th:text="${emp.id}"></td>
+									<td th:text="${emp.lastName}"></td>
+									<td th:text="${emp.email}"></td>
+									<td th:text="${emp.gender==1?'男':'女'}"></td>
+									<td th:text="${emp.department.departmentName}"></td>
+									<td th:text="${#dates.format(emp.birth, 'yyyy/MM/dd HH:mm')}"></td>
+									<td>
+										<a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.id}">编辑</a>
+										<button  th:attr="delUri=@{/emp/}+${emp.id}" class="btn btn-sm btn-danger delBtn">删除</button>
+									</td>
+
+
 								</tr>
 							</tbody>
 						</table>
 					</div>
 				</main>
+
+				<form id="delForm" method="post" >
+					<input type="hidden" name="_method" value="delete"/>
+
+				</form>
 			</div>
 		</div>
 
@@ -322,6 +237,11 @@
 		<script type="text/javascript" src="asserts/js/feather.min.js"></script>
 		<script>
 			feather.replace()
+			$(".delBtn").click(function () {
+				$("#delForm").attr("action",$(this).attr("delUri")).submit();
+				return false;
+            });
+
 		</script>
 
 		<!-- Graphs -->
