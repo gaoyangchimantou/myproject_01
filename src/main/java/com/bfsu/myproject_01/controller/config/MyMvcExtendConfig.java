@@ -33,7 +33,8 @@ public class MyMvcExtendConfig implements WebMvcConfigurer {
             public void addInterceptors(InterceptorRegistry registry) {
                 HandlerInterceptor loginHandlerInterceptor=new LoginInterceptor();
 
-                registry.addInterceptor(loginHandlerInterceptor).addPathPatterns("/**").excludePathPatterns("/","/login","/user/login","/login.html","/asserts/**","/webjars/**");
+              //  registry.addInterceptor(loginHandlerInterceptor).addPathPatterns("/**").excludePathPatterns("/","/login","/user/login","/login.html","/asserts/**","/webjars/**");
+                //为了测试springboot的错误处理机制,先将权限拦截器给注释掉
             }
         };
         return webMvcConfigurer;

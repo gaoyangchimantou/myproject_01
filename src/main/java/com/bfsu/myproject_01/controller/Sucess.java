@@ -1,13 +1,26 @@
 package com.bfsu.myproject_01.controller;
 
+import com.bfsu.myproject_01.exception.UserNotExitException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.Map;
 
 @Controller
 public class Sucess {
+    @RequestMapping("/hello")
+    public String hello(@RequestParam("str") String str){
+        System.out.println("hello  word");
+        if(str.equals("aaa")){
+            throw new UserNotExitException();
+        }
+        return "sucess";
+    }
+
+
+
 
     //第一种默认访问首页的方法 ,就是在一个controller里写一个方法来实现    映射里面的"/"  就表示 所有的有映射到的请求都走我这个方法,去首页
    /* @RequestMapping({"index","/"})
