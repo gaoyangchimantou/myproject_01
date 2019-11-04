@@ -5,15 +5,20 @@ import com.bfsu.myproject_01.dao.EmployeeDao;
 import com.bfsu.myproject_01.entities.Department;
 import com.bfsu.myproject_01.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 //用它来处理,员工相关的操作
 @Controller
 public class EmployeeController {
+    @Autowired
+    JdbcTemplate jdbcTemplate;
     @Autowired
     private EmployeeDao employeeDao;
     @Autowired
@@ -21,7 +26,8 @@ public class EmployeeController {
     @RequestMapping("/emps")
     public String emps( Model model){
         Collection<Employee> employees = employeeDao.getAll();
-
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * FROM department");
+        System.out.println(maps);
         model.addAttribute("emps",employees);
 
         return "emp/list";
