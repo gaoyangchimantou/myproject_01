@@ -1,6 +1,7 @@
 package com.bfsu.myproject_01.controller;
 
 import com.bfsu.myproject_01.dao.DepartmentDao;
+import com.bfsu.myproject_01.dao.DepartmentMapper;
 import com.bfsu.myproject_01.dao.EmployeeDao;
 import com.bfsu.myproject_01.entities.Department;
 import com.bfsu.myproject_01.entities.Employee;
@@ -18,6 +19,9 @@ import java.util.Map;
 @Controller
 public class EmployeeController {
     @Autowired
+    DepartmentMapper departmentMapper;
+
+    @Autowired
     JdbcTemplate jdbcTemplate;
     @Autowired
     private EmployeeDao employeeDao;
@@ -26,8 +30,10 @@ public class EmployeeController {
     @RequestMapping("/emps")
     public String emps( Model model){
         Collection<Employee> employees = employeeDao.getAll();
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * FROM department");
-        System.out.println(maps);
+       // List<Map<String, Object>> maps = jdbcTemplate.queryForList("SELECT * FROM department");
+     //   System.out.println(maps);
+        Department dep = departmentMapper.getDep(1);
+        System.out.println(dep);
         model.addAttribute("emps",employees);
 
         return "emp/list";
