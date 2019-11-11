@@ -1,8 +1,11 @@
 package com.bfsu.myproject_01.entities;
 
+import com.sun.org.apache.xml.internal.serializer.SerializationHandler;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Employee {
+public class Employee implements Serializable{
 
 	private Integer id;
     private String lastName;

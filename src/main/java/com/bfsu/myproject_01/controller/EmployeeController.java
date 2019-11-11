@@ -5,7 +5,9 @@ import com.bfsu.myproject_01.dao.DepartmentMapper;
 import com.bfsu.myproject_01.dao.EmployeeDao;
 import com.bfsu.myproject_01.entities.Department;
 import com.bfsu.myproject_01.entities.Employee;
+import com.bfsu.myproject_01.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,9 @@ import java.util.Map;
 @Controller
 public class EmployeeController {
     @Autowired
+    DepartmentService departmentService;
+
+    @Autowired
     DepartmentMapper departmentMapper;
 
     @Autowired
@@ -27,6 +32,7 @@ public class EmployeeController {
     private EmployeeDao employeeDao;
     @Autowired
     private DepartmentDao departmentDao;
+    @Cacheable(cacheNames = {"emp"})
     @RequestMapping("/emps")
     public String emps( Model model){
         Collection<Employee> employees = employeeDao.getAll();
@@ -82,5 +88,33 @@ public class EmployeeController {
         employeeDao.delete(id);
         return "redirect:/emps";
     }
+
+    @GetMapping("/empaa")
+    @ResponseBody
+    public String empaa(Model model){
+        //到添加页面之前先把所有的部门给查出来
+        Collection<Department> departments = departmentDao.getDepartments();
+        model.addAttribute("depts",departments);
+      //
+        //  Department dep = departmentMapper.getDep(1);
+        //System.out.println(dep);
+        String empaa = departmentService.empaa(1).toString();
+        return empaa;
+    }
+
+    @GetMapping("/deptUp")
+    @ResponseBody
+    public String empaa(Department department){
+        //到添加页面之前先把所有的部门给查出来
+        Department dep= departmentService.updateDep(department);
+        return dep.toString();
+    }
+    @GetMapping("/delDep")
+    @ResponseBody
+    public String delDep(Integer id){
+        departmentService.delDep(id);
+        return "success";
+    }
+
 
 }
