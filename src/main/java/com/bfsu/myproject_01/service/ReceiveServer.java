@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class ReceiveServer {
     @RabbitListener(queues = "atguigu.emps")
     public void receive(Message message){
-
+       // message.
        // byte[] body = message.getBody();
         System.out.println(message.getBody());
         String ss=new String(message.getBody());
